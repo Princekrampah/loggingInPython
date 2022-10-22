@@ -1,0 +1,26 @@
+version: 1
+formatters:
+  s_formatter:
+    format: '%(name)s - %(levelname)s - %(message)s - %(asctime)s'
+  f_formatter:
+    format: '%(name)s - %(levelname)s - %(message)s - %(asctime)s'
+handlers:
+  s_handler:
+    class: logging.StreamHandler
+    level: ERROR
+    formatter: s_formatter
+    stream: ext://sys.stdout
+  f_handler:
+    class: logging.FileHandler
+    level: WARNING
+    formatter: f_formatter
+    filename: config_log.log
+    mode: a
+loggers:
+  s_logger:
+    level: DEBUG
+    handlers: [s_handler]
+    propagate: no
+root:
+  level: WARNING
+  handlers: [s_handler, f_handler]
